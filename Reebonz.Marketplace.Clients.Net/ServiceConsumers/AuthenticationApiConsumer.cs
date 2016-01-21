@@ -7,7 +7,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
     public class AuthenticationApiConsumer : BaseApiConsumer
     {
-        public override string ApiControllerUrl { get; }
+        public override string ApiControllerUrl { get; set; }
         public AuthenticationApiConsumer() : base(string.Empty)
         {
             ApiControllerUrl = "api/token";

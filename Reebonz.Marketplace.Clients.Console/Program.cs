@@ -25,7 +25,7 @@ namespace Reebonz.Marketplace.Clients.Console
             catch (AggregateException aggregateException)
             {
                 var exceptionMessages = aggregateException.Flatten().InnerExceptions.Select(e => e.Message);
-                System.Console.WriteLine($"Error: {string.Join(Environment.NewLine, exceptionMessages)}");
+                System.Console.WriteLine("Error: {string.Join(Environment.NewLine, exceptionMessages)}");
             }
         }
 

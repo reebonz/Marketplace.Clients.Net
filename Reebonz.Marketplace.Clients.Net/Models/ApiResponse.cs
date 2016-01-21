@@ -45,7 +45,7 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         public ApiErrorResponse(IEnumerable<ApiError> errors, IEnumerable<ApiError> warnings = null)
         {
             Errors = errors.ToArray();
-            Warnings = warnings?.ToArray();
+            Warnings = warnings.ToArray();
         }
 
         public ApiErrorResponse()

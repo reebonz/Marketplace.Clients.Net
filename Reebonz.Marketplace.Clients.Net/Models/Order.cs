@@ -31,6 +31,16 @@ namespace Reebonz.Marketplace.Clients.Net.Models
 
     public class OrderItem
     {
+        public OrderItem()
+        {
+            AccountCreditedBy = new Price
+            {
+                Amount = SaleAmount.Amount - CommissionAmount.Amount,
+                Currency = SaleAmount.Currency
+            };
+
+        }
+
         public int OrderItemId { get; set; }
         public string ReebonzProductCode { get; set; }
         public string MerchantProductCode { get; set; }
@@ -48,11 +58,7 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         public Price DiscountAmount { get; set; }
         public Price CommissionAmount { get; set; }
         public decimal? CommissionPercentage { get; set; }
-        public Price AccountCreditedBy => new Price
-        {
-            Amount = SaleAmount.Amount - CommissionAmount.Amount,
-            Currency = SaleAmount.Currency
-        };
+        public Price AccountCreditedBy;
     }
     public class OrderShipment
     {
@@ -81,10 +87,15 @@ namespace Reebonz.Marketplace.Clients.Net.Models
     }
     public class OrderItemReference
     {
+        public OrderItemReference()
+        {
+            Quantity = OrderItemIds.Length;
+        }
+
         public string MerchantProductCode { get; set; }
         public string ReebonzProductCode { get; set; }
         public int[] OrderItemIds { get; set; }
-        public int Quantity => OrderItemIds.Length;
+        public int Quantity;
     }
 
     public class FilterMerchantOrdersForm

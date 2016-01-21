@@ -15,7 +15,7 @@ namespace Reebonz.Marketplace.Clients.Net.Helpers
     // TODO Vu.Nguyen: have Nick review
     public static class RestApiHelper
     {
-        public static string BaseApiAddress => ApiConfig.HostName;
+        public static string BaseApiAddress = ApiConfig.HostName;
 
         // TODO Vu.Nguyen: have Nick review
         public static async Task<T> InvokeApiAsync<T>(string url, HttpMethod httpMethod, ApiHeader apiHeader = null, object body = null)

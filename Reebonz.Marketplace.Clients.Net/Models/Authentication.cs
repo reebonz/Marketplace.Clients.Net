@@ -5,8 +5,8 @@ namespace Reebonz.Marketplace.Clients.Net.Models
 {
     public class ApiHeader
     {
-        public static string TokenType => "Bearer";
-        public static string AuthorizationHeaderName => "Authorization";
+        public static string TokenType = "Bearer";
+        public static string AuthorizationHeaderName = "Authorization";
 
         public ApiHeader(string token)
         {
@@ -19,7 +19,7 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         {
             var headers = new Dictionary<string, string>
             {
-                {AuthorizationHeaderName, $"{TokenType} {Token}"}
+                {AuthorizationHeaderName, "{TokenType} {Token}"}
             };
 
             return headers;
