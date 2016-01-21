@@ -6,7 +6,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
     public class ProductApiConsumer : BaseApiConsumer
     {
-        public override string ApiControllerUrl { get; }
+        public override string ApiControllerUrl { get; set; }
 
         public ProductApiConsumer(string token) : base(token)
         {
@@ -15,14 +15,14 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 
         public Product Get(string id)
         {
-            var url = $"{ApiControllerUrl}/{id}";
+            var url = "{ApiControllerUrl}/{id}";
             return RestApiHelper.InvokeApi<Product>(url, HttpMethod.Get, ApiHeader);
         }
 
         public ProductPage Get(PagingRequest paging, FilterMerchantProductsForm form)
         {
-            var queryString = $"{paging.ToQueryString()}&{form.ToQueryString()}";
-            var url = $"{ApiControllerUrl}?{queryString}";
+            var queryString = "{paging.ToQueryString()}&{form.ToQueryString()}";
+            var url = "{ApiControllerUrl}?{queryString}";
             return RestApiHelper.InvokeApi<ProductPage>(url, HttpMethod.Get, ApiHeader);
         }
 
@@ -34,7 +34,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 
         public ApiResponse<Product> Update(string id, BaseProduct product)
         {
-            var url = $"{ApiControllerUrl}/{id}";
+            var url = "{ApiControllerUrl}/{id}";
             return RestApiHelper.InvokeApi<ApiResponse<Product>>(url, HttpMethod.Put, ApiHeader, product);
         }
     }
