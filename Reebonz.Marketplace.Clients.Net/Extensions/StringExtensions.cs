@@ -1,10 +1,27 @@
-﻿using System.Linq;
+﻿
+
+using System.Linq;
 using System.Web;
 
-namespace Reebonz.Marketplace.Clients.Net.Helpers
+namespace Reebonz.Marketplace.Clients.Net.Extensions
 {
-    public static class ExtensionMethods
+    public static class StringExtensions
     {
+        public static string FormatWith(this string s, params object[] args)
+        {
+            return string.Format(s, args);
+        }
+
+        public static bool IsNullOrEmpty(this string s)
+        {
+            return string.IsNullOrEmpty(s);
+        }
+
+        public static bool IsNotNullOrEmpty(this string s)
+        {
+            return !string.IsNullOrEmpty(s);
+        }
+
         public static string ToQueryString(this object obj)
         {
             if (obj == null)

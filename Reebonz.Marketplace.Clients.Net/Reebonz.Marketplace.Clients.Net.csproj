@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net451\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -43,7 +47,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,23 +58,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\ApiConfig.cs" />
-    <Compile Include="Models\Authentication.cs" />
-    <Compile Include="Models\BatchProcessResults.cs" />
-    <Compile Include="Models\Inventory.cs" />
-    <Compile Include="Models\Order.cs" />
+    <Compile Include="Entities\ApiException.cs" />
+    <Compile Include="Extensions\RestRequestExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Helpers\RestHelper.cs" />
+    <Compile Include="MarketplaceClient.cs" />
+    <Compile Include="Entities\ApiToken.cs" />
+    <Compile Include="Entities\BatchProcessResults.cs" />
+    <Compile Include="Entities\Inventory.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\Paging.cs" />
+    <Compile Include="Entities\TokenRequest.cs" />
     <Compile Include="ServiceConsumers\InventoryApiConsumer.cs" />
-    <Compile Include="ServiceConsumers\OrderApiConsumber.cs" />
-    <Compile Include="ValueObjects\ContentType.cs" />
-    <Compile Include="Helpers\ExtensionMethods.cs" />
-    <Compile Include="Models\ApiResponse.cs" />
-    <Compile Include="ValueObjects\Attributes.cs" />
-    <Compile Include="Models\Taxonomy.cs" />
-    <Compile Include="ValueObjects\Enumerations.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="ServiceConsumers\OrderApiConsumer.cs" />
+    <Compile Include="Entities\ContentType.cs" />
+    <Compile Include="Entities\ApiResponse.cs" />
+    <Compile Include="Entities\Attributes.cs" />
+    <Compile Include="Entities\Taxonomy.cs" />
+    <Compile Include="Entities\Enumerations.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\RestApiHelper.cs" />
-    <Compile Include="ServiceConsumers\AuthenticationApiConsumer.cs" />
     <Compile Include="ServiceConsumers\BaseApiConsumer.cs" />
     <Compile Include="ServiceConsumers\ProductApiConsumer.cs" />
     <Compile Include="ServiceConsumers\TaxonomyApiConsumer.cs" />

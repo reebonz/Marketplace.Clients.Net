@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Reebonz.Marketplace.Clients.Net.Models
+namespace Reebonz.Marketplace.Clients.Net.Entities
 {
     public class CategoryJson
     {
@@ -8,12 +8,6 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         public string Name { get; set; }
         public int? ParentId { get; set; }
         public List<CategoryJson> Children { get; set; }
-    }
-
-    public class ShippingCountryJson
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
     }
 
     public class AttributeGroupForCategoryJson

@@ -1,40 +1,49 @@
-﻿using System.Net.Http;
-using Reebonz.Marketplace.Clients.Net.Helpers;
-using Reebonz.Marketplace.Clients.Net.Models;
+﻿using System.Collections.Generic;
+using Reebonz.Marketplace.Clients.Net.Entities;
+using Reebonz.Marketplace.Clients.Net.Extensions;
+using RestSharp;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
     public class InventoryApiConsumer : BaseApiConsumer
     {
-        public override string ApiControllerUrl { get; set; }
-
-        public InventoryApiConsumer(string token) : base(token)
-        {
-            ApiControllerUrl = "api/merchants/inventory";
-        }
+        internal InventoryApiConsumer(RestClient client, bool throwOnErrorStatus) : base(client, throwOnErrorStatus)
+        {}
 
         public Inventory Get(string merchantProductCode)
         {
-            var url = "{ApiControllerUrl}/{merchantProductCode}";
-            return RestApiHelper.InvokeApi<Inventory>(url, HttpMethod.Get, ApiHeader);
+            var request = new RestRequest("api/merchants/inventory/" + merchantProductCode, Method.GET);
+            return Client.Execute<Inventory>(request).Data;
         }
 
-        public HttpResponseMessage Post(Inventory[] inventories)
+        public IEnumerable<Inventory> Get(int pageNumber, int pageSize, ProductStatus? status = null)
         {
-            var url = ApiControllerUrl;
-            return RestApiHelper.InvokeApi<HttpResponseMessage>(url, HttpMethod.Post, ApiHeader, inventories);
+            var request = new RestRequest("api/merchants/inventory?pageNumber={0}&pageSize={1}{2}".FormatWith(
+                pageNumber, 
+                pageSize, 
+                status == null ? string.Empty : "&status={0}".FormatWith(status)), Method.GET);
+
+            return Client.Execute<List<Inventory>>(request).Data;
         }
 
-        public HttpResponseMessage Put(string merchantProductCode, InventoryUpdate inventory)
+        public ApiResponse<BulkInventoryUpdateResponse> Post(Inventory[] skus)
         {
-            var url = "{ApiControllerUrl}/{merchantProductCode}";
-            return RestApiHelper.InvokeApi<HttpResponseMessage>(url, HttpMethod.Put, ApiHeader, inventory);
+            var request = new RestRequest("api/merchants/inventory", Method.POST);
+            request.AddJsonBody(skus);
+            return HandleResponse<BulkInventoryUpdateResponse>(Client.Execute(request));
         }
 
-        public BatchProcessResults GetBatchJobResults(string jobId)
+        public ApiResponse<Inventory> Put(string merchantProductCode, InventoryUpdate inventory)
         {
-            var url = "{ApiControllerUrl}/results/{jobId}";
-            return RestApiHelper.InvokeApi<BatchProcessResults>(url, HttpMethod.Get, ApiHeader);
+            var request = new RestRequest("api/merchants/inventory/{0}".FormatWith(merchantProductCode), Method.PUT);
+            request.AddJsonBody(inventory);
+            return HandleResponse<Inventory>(Client.Execute(request));
+        }
+
+        public BatchProcessResultSummary GetBatchJobResults(string jobId)
+        {
+            var request = new RestRequest("api/merchants/inventory/results/{0}".FormatWith(jobId), Method.GET);
+            return Client.Execute<BatchProcessResultSummary>(request).Data;
         }
     }
 }

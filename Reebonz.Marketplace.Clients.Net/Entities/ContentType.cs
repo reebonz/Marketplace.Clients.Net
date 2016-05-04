@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Reebonz.Marketplace.Clients.Net.ValueObjects
+namespace Reebonz.Marketplace.Clients.Net.Entities
 {
     public enum ContentType
     {

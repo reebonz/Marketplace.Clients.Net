@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Reebonz.Marketplace.Clients.Net.ValueObjects
+namespace Reebonz.Marketplace.Clients.Net.Entities
 {
     public enum MerchantProductFilter
     {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Reebonz.Marketplace.Clients.Net.ValueObjects;
 
-namespace Reebonz.Marketplace.Clients.Net.Models
+namespace Reebonz.Marketplace.Clients.Net.Entities
 {
     public class OrderPage
     {
@@ -60,6 +59,7 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         public decimal? CommissionPercentage { get; set; }
         public Price AccountCreditedBy;
     }
+
     public class OrderShipment
     {
         public int Id { get; set; }
@@ -85,6 +85,7 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         public string TrackingNumber { get; set; }
         public DateTimeOffset? PickupBookedAt { get; set; }
     }
+
     public class OrderItemReference
     {
         public OrderItemReference()
@@ -110,6 +111,7 @@ namespace Reebonz.Marketplace.Clients.Net.Models
             Status = new OrderItemStatus[0];
         }
     }
+
     public class OrderEvent
     {
         public OrderEvent()
@@ -137,17 +139,30 @@ namespace Reebonz.Marketplace.Clients.Net.Models
         public string Currency { get; set; }
     }
 
-    public interface IShipItemsForm
+    public class CancelOrderRequest
     {
-        int? NumberOfPackages { get; set; }
-        int[] ItemIds { get; set; }
+        public string Message { get; set; }
+        public int[] ItemIds { get; set; }
     }
 
-    public class ShipOrderRequest : IShipItemsForm
+    public class ShipOrderRequest
     {
         public int[] ItemIds { get; set; }
         public string ShipmentTrackingId { get; set; }
         public string ShipmentCarrier { get; set; }
         public int? NumberOfPackages { get; set; }
+    }
+
+    public class MerchantOrdersRequest : PageAndSortJsonRequest
+    {
+        public string OrderId { get; set; }
+        public OrderItemStatus[] Status { get; set; }
+        public DateTimeOffset? StartDate { get; set; }
+        public DateTimeOffset? EndDate { get; set; }
+
+        public MerchantOrdersRequest()
+        {
+            Status = new OrderItemStatus[0];
+        }
     }
 }
