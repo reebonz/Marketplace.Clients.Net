@@ -29,6 +29,12 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return HandleResponse<Product>(Client.Execute(request));
         }
 
+        public ApiResponse<Product> Unpublish(string id)
+        {
+            var request = new RestRequest("api/merchants/products/{0}/unpublish".FormatWith(id), Method.PUT);
+            return HandleResponse<Product>(Client.Execute(request));
+        }
+
         public ApiResponse<Product> Put(string id, BaseProduct product)
         {
             var request = new RestRequest("api/merchants/products/{0}".FormatWith(id), Method.PUT);
