@@ -14,7 +14,7 @@ namespace Reebonz.Marketplace.Clients.Net.Helpers
             client.AddHandler("text/x-json", NewtonsoftJsonSerializer.Default);
             client.AddHandler("text/javascript", NewtonsoftJsonSerializer.Default);
             client.AddHandler("*+json", NewtonsoftJsonSerializer.Default);
-
+            client.Timeout = 90000; //90 seconds
             return client;
         }
     }

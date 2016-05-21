@@ -35,7 +35,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return HandleResponse<Product>(Client.Execute(request));
         }
 
-        public ApiResponse<Product> Put(string id, BaseProduct product)
+        public ApiResponse<Product> Put(string id, Product product)
         {
             var request = new RestRequest("api/merchants/products/{0}".FormatWith(id), Method.PUT);
             request.AddJsonBody(product);
@@ -49,7 +49,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return HandleResponse<Product>(Client.Execute(request));
         }
 
-        public ApiResponse<Product> Post(BaseProduct product)
+        public ApiResponse<Product> Post(Product product)
         {
             var request = new RestRequest("api/merchants/products", Method.POST);
             request.AddJsonBody(product);

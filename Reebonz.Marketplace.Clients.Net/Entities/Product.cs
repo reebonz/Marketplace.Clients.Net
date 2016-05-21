@@ -56,6 +56,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// </summary>
         public string MerchantProductGroupCode { get; set; }
         /// <summary>
+        /// If you have multiple products of the same colour you can store the common identifier for those products in this field
+        /// We only support variants by size.
+        /// </summary>
+        public string CollectionId { get; set; }
+        /// <summary>
         /// Optional: True if you want this product to be featured on the merchants home page, defaults to false
         /// </summary>
         public bool? Featured { get; set; }
