@@ -84,6 +84,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// Product information in alternative locales
         /// </summary>
         public ProductLocale[] Locales { get; set; }
+        /// <summary>
+        /// Support for pricing by country, dictionary key is 2 letter country ISO code
+        /// </summary>
+        public Dictionary<string, ProductPrice> Prices { get; set; }
 
         public static string GetId(string friendlyId)
         {
@@ -92,6 +96,13 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
 
             return friendlyId.Contains("/") ? friendlyId : $"products/{friendlyId}";
         }
+    }
+
+    public class ProductPrice
+    {
+        public decimal? Retail { get; set; }
+        public decimal Sale { get; set; }
+        public decimal? Markdown { get; set; }
     }
 
     public class Product : BaseProduct
@@ -104,7 +115,6 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public ProductStatus Status { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? LastModified { get; set; }
-
     }
 
     public class PatchProduct : BaseProduct
