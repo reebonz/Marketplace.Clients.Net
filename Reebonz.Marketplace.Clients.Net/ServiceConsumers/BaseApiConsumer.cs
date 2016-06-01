@@ -26,6 +26,8 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             switch (response.StatusCode)
             {
                 case HttpStatusCode.OK:
+                    res.Resource = JsonConvert.DeserializeObject<T>(response.Content);
+                    break;
                 case HttpStatusCode.Created:
                     if(usesApiResponse)
                     {
