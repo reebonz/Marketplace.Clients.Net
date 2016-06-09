@@ -30,7 +30,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
         {
             var request = new RestRequest("api/merchants/inventory", Method.POST);
             request.AddJsonBody(skus);
-            return HandleResponse<BulkInventoryUpdateResponse>(Client.Execute(request));
+            return HandleResponse<BulkInventoryUpdateResponse>(Client.Execute(request),false);
         }
 
         public ApiResponse<Inventory> Put(string merchantProductCode, InventoryUpdate inventory)
