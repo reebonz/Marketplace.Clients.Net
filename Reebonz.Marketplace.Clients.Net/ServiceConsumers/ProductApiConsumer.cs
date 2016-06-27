@@ -42,7 +42,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return HandleResponse<Product>(Client.Execute(request));
         }
 
-        public ApiResponse<Product> Patch(string id, PatchProduct patchProduct)
+        public ApiResponse<Product> Patch(string id, object patchProduct)
         {
             var request = new RestRequest("api/merchants/products/{0}".FormatWith(id), Method.PATCH);
             request.AddJsonBody(patchProduct);
