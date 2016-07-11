@@ -49,6 +49,25 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return Client.Execute<List<Order>>(request).Data;
         }
 
+        public ApiResponse<OrderPage> GetOrdersPage(MerchantOrdersRequest form)
+        {
+            string url = "api/merchants/orders?";
+
+            if (form != null)
+            {
+                url += "PageNumber=" + (form.PageNumber ?? 1) + "&PageSize=" + (form.PageSize ?? 25);
+                if (form.StartDate.HasValue)
+                    url += "&StartDate=" + form.StartDate.Value.ToString("yyyy-MM-dd:hh:mm:ss");
+                if (form.EndDate.HasValue)
+                    url += "&EndDate=" + form.EndDate.Value.ToString("yyyy-MM-dd:hh:mm:ss");
+                if (form.Status.Any())
+                    url += string.Join("&Status=", form.Status);
+            }
+            
+            var request = new RestRequest(url, Method.GET);
+            return HandleResponse<OrderPage>(Client.Execute<OrderPage>(request),false);
+        }
+
         public ApiResponse<OrderShipment> CreateShipment(string id, ShipOrderRequest form)
         {
             var request = new RestRequest("api/merchants/orders/{0}/shipments".FormatWith(id), Method.POST);

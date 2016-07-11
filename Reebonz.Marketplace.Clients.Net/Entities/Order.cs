@@ -30,15 +30,15 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
 
     public class OrderItem
     {
-        public OrderItem()
-        {
-            AccountCreditedBy = new Price
-            {
-                Amount = SaleAmount.Amount - CommissionAmount.Amount,
-                Currency = SaleAmount.Currency
-            };
+        //public OrderItem()
+        //{
+        //    AccountCreditedBy = new Price
+        //    {
+        //        Amount = SaleAmount.Amount - CommissionAmount.Amount,
+        //        Currency = SaleAmount.Currency
+        //    };
 
-        }
+        //}
 
         public int OrderItemId { get; set; }
         public string ReebonzProductCode { get; set; }
