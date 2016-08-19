@@ -16,7 +16,6 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
             Variants = new Variant[0];
             Images = new Image[0];
             Keywords = new string[0];
-            Locales = new ProductLocale[0];
         }
 
         /// <summary>
@@ -81,13 +80,21 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// </summary>
         public decimal? RetailPrice { get; set; }
         /// <summary>
-        /// Product information in alternative locales
-        /// </summary>
-        public ProductLocale[] Locales { get; set; }
-        /// <summary>
         /// Support for pricing by country, dictionary key is 2 letter country ISO code
         /// </summary>
         public Dictionary<string, ProductPrice> Prices { get; set; }
+        /// <summary>
+        /// User Consignment / Non Consignment etc (Reebonz)
+        /// </summary>
+        public string ProductGroup { get; set; }
+        /// <summary>
+        /// In Demand, Clearance, Normal, New Arrival (Reebonz)
+        /// </summary>
+        public string StockClassification { get; set; }
+        /// <summary>
+        /// Source cost of goods (Reebonz)
+        /// </summary>
+        public decimal CostOfGoods { get; set; }
 
         public static string GetId(string friendlyId)
         {
