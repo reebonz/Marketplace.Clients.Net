@@ -39,5 +39,12 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             var request = new RestRequest($"api/taxonomy/attributes/{id}", Method.GET);
             return Client.Execute<AttributeDefinitionJson>(request).Data;
         }
+
+        public ApiResponse<PostAttributeResponse> PostAttribute(PostAttributeJson attribute)
+        {
+            var request = new RestRequest("api/taxonomy/attribute", Method.POST);
+            request.AddJsonBody(attribute);
+            return HandleResponse<PostAttributeResponse>(Client.Execute(request), false);
+        }
     }
 }
