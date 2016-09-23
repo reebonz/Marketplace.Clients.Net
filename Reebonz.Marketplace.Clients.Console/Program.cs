@@ -7,11 +7,11 @@
             //var client = new MarketplaceClient("http://dev-merchant-api.reebonz.com");
             //var client = new MarketplaceClient("https://marketplace-api-sandbox.reebonz-dev.com");
 
-            //client.Authenticate("LzFuUzVWZThGT0pnMnY4ZzJ1dkYvank2STNwdVZGNzlTMEJkSi9IRWJhNGxMa2lBV1B6WHR4cXpqSXNFVXlVKw==");
+            //client.Authenticate("LzFuUzVWZThGT0pnMnY4ZzJ1dkYvank2STNwdVZGNzlTMEJkSi9IRWJhNDFjSzZPUzFEWWJOTU9lem1ZUy9veg==");
             //var catAtts = client.Taxonomy.GetCategoryAttributes(1);
             //var result = client.Taxonomy.PostAttribute(new PostAttributeJson
             //{
-            //    Name = "Vu Nguyen 123",
+            //    Name = "Vu Nguyeeeen 123",
             //    Type = AtributeType.Designer
             //});
 

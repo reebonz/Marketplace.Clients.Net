@@ -50,6 +50,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
     }
     public class PostAttributeResponse
     {
+        public int AttributeItemId { get; set; }
         public string Name { get; set; }
         public AtributeType Type { get; set; }
     }
