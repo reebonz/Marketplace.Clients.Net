@@ -92,7 +92,7 @@ namespace Reebonz.Marketplace.Clients.Net
             });
 
             var response = _client.Execute<ApiToken>(request);
-            
+
             SetAuthHeader(response.Data.access_token);
             _authenticated = true;
             return response.Data;

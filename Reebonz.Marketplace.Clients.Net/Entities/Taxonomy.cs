@@ -41,4 +41,26 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public IEnumerable<AttributeItemJson> AttributeItems { get; set; }
         public int? MaxValuesAllowedOnProduct { get; set; }
     }
+
+    public class PostAttributeJson
+    {
+        public string Name { get; set; }
+        public bool? IsAvailable { get; set; }
+        public AtributeType Type { get; set; }
+    }
+    public class PostAttributeResponse
+    {
+        public int AttributeItemId { get; set; }
+        public string Name { get; set; }
+        public AtributeType Type { get; set; }
+    }
+
+    public enum AtributeType
+    {
+        Designer,
+        Size,
+        Condition,
+        Color,
+        Gender
+    }
 }

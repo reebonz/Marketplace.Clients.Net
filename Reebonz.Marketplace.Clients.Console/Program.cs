@@ -1,14 +1,21 @@
-﻿using System;
-using System.Linq;
-using Reebonz.Marketplace.Clients.Net.Entities;
-using Reebonz.Marketplace.Clients.Net.ServiceConsumers;
-
-namespace Reebonz.Marketplace.Clients.Console
+﻿namespace Reebonz.Marketplace.Clients.Console
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
+            //var client = new MarketplaceClient("http://dev-merchant-api.reebonz.com");
+            //var client = new MarketplaceClient("https://marketplace-api-sandbox.reebonz-dev.com");
+
+            //client.Authenticate("LzFuUzVWZThGT0pnMnY4ZzJ1dkYvank2STNwdVZGNzlTMEJkSi9IRWJhNDFjSzZPUzFEWWJOTU9lem1ZUy9veg==");
+            //var catAtts = client.Taxonomy.GetCategoryAttributes(1);
+            //var result = client.Taxonomy.PostAttribute(new PostAttributeJson
+            //{
+            //    Name = "Vu Nguyeeeen 123",
+            //    Type = AtributeType.Designer
+            //});
+
+
             //var authenticationService = new AuthenticationApiConsumer();
             //var token = authenticationService.GetApiToken("camping89.merchant@gmail.com", "123456").Token;
 
