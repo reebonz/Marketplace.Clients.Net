@@ -94,7 +94,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// <summary>
         /// Source cost of goods (Reebonz)
         /// </summary>
-        public decimal CostOfGoods { get; set; }
+        public decimal? CostOfGoods { get; set; }
 
         public static string GetId(string friendlyId)
         {
