@@ -255,25 +255,4 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
             Filters = new MerchantProductFilter[0];
         }
     }
-
-
-    public class CountryPrice
-    {
-        /// <summary>
-        /// 2 letter ISO code of the country
-        /// </summary>
-        public string CountryIsoCode { get; set; }
-        /// <summary>
-        /// Original selling price of this item (RRP)
-        /// </summary>
-        public decimal? Retail { get; set; }
-        /// <summary>
-        /// Price you want to sell this item at
-        /// </summary>
-        public decimal Sale { get; set; }
-        /// <summary>
-        /// If specified will override the Sale price and become the new selling price, will also trigger a slash through on the price where displayed.
-        /// </summary>
-        public decimal? Markdown { get; set; }
-    }
 }
