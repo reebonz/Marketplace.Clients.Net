@@ -163,6 +163,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// Required: Quantity of this product you have for sale
         /// </summary>
         public int Quantity { get; set; }
+        /// <summary>
+        /// the timestamp of the inventory change - should come from the merchant and ensures we dont process the same update multiple times
+        /// </summary>
+        public DateTime? SyncTimestamp { get; set; }
     }
 
     public class ProductLocale
