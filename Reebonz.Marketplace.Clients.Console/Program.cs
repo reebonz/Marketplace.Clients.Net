@@ -1,6 +1,4 @@
-﻿using System.Net;
-using Reebonz.Marketplace.Clients.Net;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net;
 
 namespace Reebonz.Marketplace.Clients.Console
 {
@@ -8,25 +6,20 @@ namespace Reebonz.Marketplace.Clients.Console
     {
         private static void Main(string[] args)
         {
-            //var client = new MarketplaceClient("http://dev-merchant-api.reebonz.com");
-            ////var client = new MarketplaceClient("https://marketplace-api-sandbox.reebonz-dev.com");
+            var localUrl = true
+                ? "http://dev-merchant-api.reebonz.com"
+                : "https://marketplace-api-sandbox.reebonz-dev.com";
+            var client = new MarketplaceClient(localUrl);
 
-            //client.Authenticate("LzFuUzVWZThGT0pnMnY4ZzJ1dkYvank2STNwdVZGNzlTMEJkSi9IRWJhNUd4Yk50MXdsTDdnNkYrQjZqTFlCTw==");
-            //var result = client.Taxonomy.PostAttribute(new PostAttributeJson
-            //{
-            //    Name = "Vu Nguyen",
-            //    Type = AtributeType.Designer
-            //});
+            client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
 
-            //if (result.StatusCode == HttpStatusCode.OK)
-            //{
-            //    System.Console.WriteLine($"result.Resource.AttributeItemId = {result.Resource.AttributeItemId}");
-            //}
-            //else
-            //{
-            //    System.Console.WriteLine(result.StatusCode);
-            //}
+            //var product = client.Products.Get("1279736");
+            //product.Id = string.Empty;
+            //var variant = product.Variants.First();
+            //variant.MerchantProductCode = "12345";
+            //var postResponse = client.Products.Post(product);
+
+            System.Console.WriteLine("DONE");
         }
-        
     }
 }
