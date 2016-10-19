@@ -100,6 +100,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// </summary>
         public bool? ExcludeFromDiscounts { get; set; }
 
+        /// <summary>
+        /// The validation message in case the product validation is failed
+        /// </summary>
+        public string ValidationMessage { get; set; }
+
         public static string GetId(string friendlyId)
         {
             if (friendlyId.IsNullOrEmpty())
