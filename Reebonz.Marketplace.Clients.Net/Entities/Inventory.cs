@@ -30,6 +30,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// </summary>
         public decimal? Price { get; set; }
         /// <summary>
+        /// Current list price for the product / variant
+        /// </summary>
+        public decimal? RetailPrice { get; set; }
+        /// <summary>
         /// A timestamp for when the inventory was updated in merchant system. Ensures we dont process the same update multiple times
         /// </summary>
         public DateTime? SyncTimestamp { get; set; }
