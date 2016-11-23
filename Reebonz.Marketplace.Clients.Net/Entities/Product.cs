@@ -132,6 +132,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// If specified will override the Sale price and become the new selling price, will also trigger a slash through on the price where displayed.
         /// </summary>
         public decimal? Markdown { get; set; }
+        /// <summary>
+        /// GP2 percentage
+        /// </summary>
+        public decimal? GP2 { get; set; }
     }
 
     public class ProductPrice

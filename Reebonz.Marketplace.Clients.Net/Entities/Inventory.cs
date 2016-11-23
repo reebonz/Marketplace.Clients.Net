@@ -37,6 +37,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// A timestamp for when the inventory was updated in merchant system. Ensures we dont process the same update multiple times
         /// </summary>
         public DateTime? SyncTimestamp { get; set; }
+        /// <summary>
+        /// Force an update even if SyncTimestamp is unchanged
+        /// </summary>
+        public bool? ForceSync { get; set; }
     }
 
     public class InventoryPage
