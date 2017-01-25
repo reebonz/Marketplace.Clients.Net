@@ -6,6 +6,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
     {
         [FriendlyName(Name = "Filter: No Main Image")]
         NoMainImage,
+        [FriendlyName(Name = "Filter: With Main Image")]
+        WithMainImage,
+        [FriendlyName(Name = "Filter: Active Merchant")]
+        ActiveMerchant,
         [FriendlyName(Name = "Filter: Featured Products")]
         FeaturedProducts,
         [FriendlyName(Name = "Filter: In Stock")]
@@ -57,36 +61,56 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
     public enum OrderItemStatus
     {
         PaymentPending,
+        PaymentAbandoned,
         PaymentTaken,
         PaymentFailed,
+        PaymentPartiallyTaken, //For installment payments
         Shipped,
+        Delivered,
         CancellationRequested,
         Cancelled,
         ReturnRequested,
-        Returned
+        ReturnApproved,
+        Returned,
+        Fraudulent
     }
 
     public enum OrderStatus
     {
         Pending,
+        PaymentAbandoned,
         PaymentPending,
+        FraudPending,
+        PaymentPartiallyTaken,
         PaymentTaken,
         PaymentFailed,
-        Deleted
+        PaymentCancelled,
+        Fraudulent
     }
 
     public enum OrderEventType
     {
         Created,
+        PaymentAbandoned,
         PaymentTaken,
+        PaymentPartiallyTaken, //For installment payments
         PaymentFailed,
         Shipped,
         CancellationRequested,
         CancellationRejected,
         CancellationApproved,
         Cancelled,
+        Delivered,
         ReturnRequested,
         ReturnApproved,
+        ReturnReceived,
+        ReturnRejected,
+        ReturnCancelled,
         Refunded,
+        Completed,
+        ShipmentReversed,
+        BuyerProtectionExtended,
+        FraudDetected,
+        ReopenFraudCase
     }
 }
