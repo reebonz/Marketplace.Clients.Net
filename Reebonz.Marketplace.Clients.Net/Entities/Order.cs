@@ -90,6 +90,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
     {
         public OrderItemReference()
         {
+            OrderItemIds = new int[0];
             Quantity = OrderItemIds.Length;
         }
 
