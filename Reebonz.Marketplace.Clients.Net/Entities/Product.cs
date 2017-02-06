@@ -252,7 +252,6 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
 
     public class MerchantProductsRequest : PageAndSortJsonRequest
     {
-        public string MerchantId { get; set; }
         public string Query { get; set; }
         public string Tag { get; set; }
         public int? CategoryId { get; set; }
