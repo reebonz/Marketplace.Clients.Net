@@ -260,7 +260,6 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public bool IncludeProducts { get; set; }
         public DateTimeOffset? CreatedAfter { get; set; }
         public DateTimeOffset? CreatedBefore { get; set; }
-        public MerchantProductFilter? Filter { get; set; }
         public MerchantProductFilter[] Filters { get; set; }
         public ProductStatus? Status { get; set; }
         public ProductSort Sort { get; set; }
