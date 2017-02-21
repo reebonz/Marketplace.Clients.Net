@@ -8,6 +8,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public string Name { get; set; }
         public int? ParentId { get; set; }
         public List<CategoryJson> Children { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}, {Name}, Parent: {ParentId}";
+        }
     }
 
     public class AttributeGroupForCategoryJson
@@ -32,6 +37,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}, {Name}";
+        }
     }
 
     public class AttributeDefinitionJson
@@ -40,6 +50,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public string Name { get; set; }
         public IEnumerable<AttributeItemJson> AttributeItems { get; set; }
         public int? MaxValuesAllowedOnProduct { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}, {Name}";
+        }
     }
 
     public class PostAttributeJson
