@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using Reebonz.Marketplace.Clients.Net;
 using Reebonz.Marketplace.Clients.Net.Entities;
-using Reebonz.Marketplace.Clients.Net.ServiceConsumers;
 
 namespace Reebonz.Marketplace.Clients.Console
 {
@@ -16,10 +14,11 @@ namespace Reebonz.Marketplace.Clients.Console
             var client = new MarketplaceClient(localUrl);
 
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
-            client.Authenticate("merchant-hamee@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
+            client.Authenticate("merchant-paolofiorillo@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
 
             //TestOrderApi(client);
-            TestProductApi(client);
+            //TestProductApi(client);
+            TestTaxonomyApi(client);
 
             System.Console.WriteLine("DONE");
         }
@@ -48,6 +47,15 @@ namespace Reebonz.Marketplace.Clients.Console
             var products = client.Products.Query(pageAndSortJsonRequest, null);
 
             var i = 1;
+        }
+
+        private static void TestTaxonomyApi(MarketplaceClient client)
+        {
+            var response = client.Taxonomy.PostAttribute(new PostAttributeJson
+            {
+                Name = "Vu Nguyen",
+                Type = AtributeType.Designer
+            });
         }
     }
 }
