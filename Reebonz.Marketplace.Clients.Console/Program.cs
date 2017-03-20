@@ -18,7 +18,7 @@ namespace Reebonz.Marketplace.Clients.Console
 
             //TestOrderApi(client);
             //TestProductApi(client);
-            TestTaxonomyApi(client);
+            //TestTaxonomyApi(client);
 
             System.Console.WriteLine("DONE");
         }
@@ -37,11 +37,96 @@ namespace Reebonz.Marketplace.Clients.Console
 
         private static void TestProductApi(MarketplaceClient client)
         {
+            var product = new Product
+            {
+                Status = ProductStatus.Draft,
+                Title = "Fancy Dinner skull detailed pumps",
+                Description = "Fancy Dinner skull detailed pumps\nHeel (inches): 4,3,2 Heel (cm): 11,5",
+                CategoryId = 73,
+                Attributes = new AttributeKey[]
+                {
+                    new AttributeKey
+                    {
+                        AttributeId = "Color",
+                        AttributeItemId = 2,
+                    },
+                    new AttributeKey
+                    {
+                        AttributeId = "Gender",
+                        AttributeItemId = 2,
+                    },
+                    new AttributeKey
+                    {
+                        AttributeId = "Condition",
+                        AttributeItemId = 5,
+                    },
+                    new AttributeKey
+                    {
+                        AttributeId = "Designer",
+                        AttributeItemId = 533,
+                    },
+                },
+                Variants = new Variant[]
+                {
+                    new Variant
+                    {
+                        Attribute = new AttributeKey
+                        {
+                            AttributeId = "ShoeSize",
+                            AttributeItemId = 79
+                        },
+                        MerchantProductCode = "2109047090512",
+                        Quantity = 1
+                    }
+                },
+                Images = new Image[]
+                {
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401.JPG",
+                        Position = 1
+                    },
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401_1_D.JPG",
+                        Position = 2
+                    },
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401_2_D.JPG",
+                        Position = 3
+                    },
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401_3_D.JPG",
+                        Position = 4
+                    },
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401_4_D.JPG",
+                        Position = 5
+                    },
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401_5_D.JPG",
+                        Position = 6
+                    },
+                    new Image
+                    {
+                        Url = "https://www.paolofiorillo.com/sync/foto/P16---FAY---NMMC132249TMNWB401_6_D.JPG",
+                        Position = 7
+                    }
+                },
+                MerchantProductGroupCode = "101316359-SW051666-02",
+                Keywords = new string[] {},
+                ListPrice = 214
+
+            };
             //var product = client.Products.Get("1279736");
             //product.Id = string.Empty;
             //var variant = product.Variants.First();
             //variant.MerchantProductCode = "12345";
-            //var postResponse = client.Products.Post(product);
+            var postResponse = client.Products.Post(product);
 
             var pageAndSortJsonRequest = new PageAndSortJsonRequest { PageNumber = 1, PageSize = 50 };
             var products = client.Products.Query(pageAndSortJsonRequest, null);
