@@ -13,6 +13,7 @@ namespace Reebonz.Marketplace.Clients.Net
         TaxonomyApiConsumer Taxonomy { get; }
         ProductApiConsumer Products { get; }
         OrderApiConsumer Orders { get; }
+        CacheApiConsumer Cache { get; }
         ApiToken Authenticate(string username, string password);
         void Authenticate(string token);
     }
@@ -25,6 +26,7 @@ namespace Reebonz.Marketplace.Clients.Net
         private readonly TaxonomyApiConsumer _taxonomy;
         private readonly ProductApiConsumer _products;
         private readonly OrderApiConsumer _orders;
+        private readonly CacheApiConsumer _cache;
 
         public MarketplaceClient(string baseUrl, bool throwOnErrorStatus = false)
         {
@@ -34,6 +36,7 @@ namespace Reebonz.Marketplace.Clients.Net
             _taxonomy = new TaxonomyApiConsumer(_client, throwOnErrorStatus);
             _products = new ProductApiConsumer(_client, throwOnErrorStatus);
             _orders = new OrderApiConsumer(_client, throwOnErrorStatus);
+            _cache = new CacheApiConsumer(_client, throwOnErrorStatus);
         }
 
         public InventoryApiConsumer Inventory
@@ -77,6 +80,16 @@ namespace Reebonz.Marketplace.Clients.Net
                     throw new AuthenticationException("Please authenticate before attempting to use the API");
 
                 return _orders;
+            }
+        }
+        public CacheApiConsumer Cache
+        {
+            get
+            {
+                if (!_authenticated)
+                    throw new AuthenticationException("Please authenticate before attempting to use the API");
+
+                return _cache;
             }
         }
 

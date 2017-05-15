@@ -19,8 +19,19 @@ namespace Reebonz.Marketplace.Clients.Console
             //TestOrderApi(client);
             //TestProductApi(client);
             //TestTaxonomyApi(client);
+            TestCache(client);
 
             System.Console.WriteLine("DONE");
+        }
+
+        private static void TestCache(MarketplaceClient client)
+        {
+            var flushSummary = client.Cache.GetFlush(new CacheInvalidationMessage
+            {
+                Namespace = CacheNamespace.Taxonomy,
+                Key = "attributetypedefinitions/designer"
+            });
+
         }
 
         private static void TestOrderApi(MarketplaceClient client)
@@ -118,7 +129,7 @@ namespace Reebonz.Marketplace.Clients.Console
                     }
                 },
                 MerchantProductGroupCode = "101316359-SW051666-02",
-                Keywords = new string[] {},
+                Keywords = new string[] { },
                 ListPrice = 214
 
             };
