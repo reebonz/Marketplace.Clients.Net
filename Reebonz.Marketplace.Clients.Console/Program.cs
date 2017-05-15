@@ -18,8 +18,8 @@ namespace Reebonz.Marketplace.Clients.Console
 
             //TestOrderApi(client);
             //TestProductApi(client);
-            //TestTaxonomyApi(client);
-            TestCache(client);
+            TestTaxonomyApi(client);
+            //TestCache(client);
 
             System.Console.WriteLine("DONE");
         }
@@ -149,8 +149,9 @@ namespace Reebonz.Marketplace.Clients.Console
         {
             var response = client.Taxonomy.PostAttribute(new PostAttributeJson
             {
-                Name = "Vu Nguyen",
-                Type = AtributeType.Designer
+                Name = "+lardini",
+                Type = AtributeType.Designer,
+                IsAvailable = true
             });
         }
     }
