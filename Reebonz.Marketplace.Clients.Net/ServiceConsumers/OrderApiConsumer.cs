@@ -38,9 +38,9 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             {
                 url += "PageNumber=" + (form.PageNumber ?? 1) + "&PageSize=" + (form.PageSize ?? 25);
                 if (form.StartDate.HasValue)
-                    url += "&StartDate=" + form.StartDate.Value.ToString("yyyy-MM-dd:hh:mm:ss");
+                    url += "&StartDate=" + form.StartDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
                 if (form.EndDate.HasValue)
-                    url += "&EndDate=" + form.EndDate.Value.ToString("yyyy-MM-dd:hh:mm:ss");
+                    url += "&EndDate=" + form.EndDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
                 if (form.Status.Any())
                     url += string.Join("&Status=", form.Status);
             }
@@ -57,9 +57,9 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             {
                 url += "PageNumber=" + (form.PageNumber ?? 1) + "&PageSize=" + (form.PageSize ?? 25);
                 if (form.StartDate.HasValue)
-                    url += "&StartDate=" + form.StartDate.Value.ToString("yyyy-MM-dd:hh:mm:ss");
+                    url += "&StartDate=" + form.StartDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
                 if (form.EndDate.HasValue)
-                    url += "&EndDate=" + form.EndDate.Value.ToString("yyyy-MM-dd:hh:mm:ss");
+                    url += "&EndDate=" + form.EndDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
                 if (form.Status.Any())
                     url += string.Join("&Status=", form.Status);
             }
