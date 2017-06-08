@@ -10,7 +10,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
         internal ProductApiConsumer(RestClient client, bool throwOnErrorStatus) : base(client, throwOnErrorStatus)
         { }
 
-        public Product Get(string id) 
+        public Product Get(string id)
         {
             var request = new RestRequest("api/merchants/products/{0}".FormatWith(id), Method.GET);
             return Client.Execute<Product>(request).Data;
@@ -32,6 +32,12 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
         public ApiResponse<Product> Unpublish(string id)
         {
             var request = new RestRequest("api/merchants/products/{0}/unpublish".FormatWith(id), Method.PUT);
+            return HandleResponse<Product>(Client.Execute(request));
+        }
+
+        public ApiResponse<Product> PutDraft(string id)
+        {
+            var request = new RestRequest("api/merchants/products/{0}/draft".FormatWith(id), Method.PUT);
             return HandleResponse<Product>(Client.Execute(request));
         }
 
