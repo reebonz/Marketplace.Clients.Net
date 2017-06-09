@@ -14,11 +14,11 @@ namespace Reebonz.Marketplace.Clients.Console
             var client = new MarketplaceClient(localUrl);
 
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
-            client.Authenticate("merchant-paolofiorillo@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
+            client.Authenticate("merchant-hamee@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
 
-            //TestOrderApi(client);
+            TestOrderApi(client);
             //TestProductApi(client);
-            TestTaxonomyApi(client);
+            //TestTaxonomyApi(client);
             //TestCache(client);
 
             System.Console.WriteLine("DONE");
