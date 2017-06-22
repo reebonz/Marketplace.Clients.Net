@@ -44,6 +44,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
                     url += "&EndDate=" + form.EndDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
                 if (form.Status.Any())
                     url += string.Join("&Status=", form.Status);
+                url += string.Join("&GetByLastModified=", form.GetByLastModified);
             }
 
             var request = new RestRequest(url, Method.GET);

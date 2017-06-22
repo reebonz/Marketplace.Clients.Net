@@ -160,6 +160,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public OrderItemStatus[] Status { get; set; }
         public DateTimeOffset? StartDate { get; set; }
         public DateTimeOffset? EndDate { get; set; }
+        public bool GetByLastModified { get; set; }
 
         public MerchantOrdersRequest()
         {
