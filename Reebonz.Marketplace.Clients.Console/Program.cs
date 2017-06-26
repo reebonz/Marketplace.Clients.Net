@@ -38,7 +38,10 @@ namespace Reebonz.Marketplace.Clients.Console
         {
             var orders = client.Orders.GetOrdersPage(new MerchantOrdersRequest
             {
-                StartDate = DateTimeOffset.Now.AddYears(-1),
+                //{6/25/2017 10:59:12 PM +00:00}
+                //StartDate = DateTimeOffset.Now.AddYears(-1),
+                StartDate = new DateTimeOffset(2017, 6, 25, 22, 59, 12, new TimeSpan(0, 0, 0)),
+                GetByLastModified = true,
                 EndDate = null,
                 PageNumber = 1,
                 PageSize = 100,
