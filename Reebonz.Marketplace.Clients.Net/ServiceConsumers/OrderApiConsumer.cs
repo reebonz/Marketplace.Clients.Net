@@ -2,6 +2,7 @@
 using System.Linq;
 using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
+using Reebonz.Marketplace.Clients.Net.Helpers;
 using RestSharp;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
@@ -48,6 +49,26 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 
             var request = new RestRequest(url, Method.GET);
             return Client.Execute<List<Order>>(request).Data;
+        }
+
+        public ApiResponse<OrderPage> GetOrdersPage(MerchantOrdersRequest form)
+        {
+            string url = "api/merchants/orders?";
+
+            if (form != null)
+            {
+                url += "PageNumber=" + (form.PageNumber ?? 1) + "&PageSize=" + (form.PageSize ?? 25);
+                if (form.StartDate.HasValue)
+                    url += "&StartDate=" + form.StartDate.Value.ToString(RestHelper.DateTimeOffsetFormat);
+                if (form.EndDate.HasValue)
+                    url += "&EndDate=" + form.EndDate.Value.ToString(RestHelper.DateTimeOffsetFormat);
+                if (form.Status.Any())
+                    url += string.Join("&Status=", form.Status);
+                url += string.Join("&GetByLastModified=", form.GetByLastModified);
+            }
+
+            var request = new RestRequest(url, Method.GET);
+            return HandleResponse<OrderPage>(Client.Execute<OrderPage>(request), false);
         }
 
         public ApiResponse<OrderShipment> CreateShipment(string id, ShipOrderRequest form)
