@@ -75,5 +75,41 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// Id of the batch inventory update, can be used to retrive the batch update results once processed.
         /// </summary>
         public string JobId { get; set; }
+        /// <summary>
+        /// If we processed the updates immediately the results are contained in this field
+        /// </summary>
+        public InventoryUpdateResult[] Results { get; set; }
+    }
+
+    public class InventoryUpdateResult
+    {
+        /// <summary>
+        /// Internal Reebonz product Id
+        /// </summary>
+        public string ProductId { get; set; }
+        /// <summary>
+        /// Merchant's Id for the SKU we're updating
+        /// </summary>
+        public string MerchantProductCode { get; set; }
+        /// <summary>
+        /// Status of the udpate
+        /// </summary>
+        public InventoryUpdateStatus Status { get; set; }
+    }
+
+    public enum InventoryUpdateStatus
+    {
+        /// <summary>
+        /// Inventory and or price was updated successfully
+        /// </summary>
+        Ok,
+        /// <summary>
+        /// Inventory and price unchanged
+        /// </summary>
+        Ignored,
+        /// <summary>
+        /// An error occured, price and inventory was not updated
+        /// </summary>
+        Error
     }
 }
