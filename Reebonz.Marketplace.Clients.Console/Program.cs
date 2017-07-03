@@ -36,7 +36,7 @@ namespace Reebonz.Marketplace.Clients.Console
 
         private static void TestOrderApi(MarketplaceClient client)
         {
-            var orders = client.Orders.GetOrdersPage(new MerchantOrdersRequest
+            var orders = client.Orders.GetOrders(new MerchantOrdersRequest
             {
                 //{6/25/2017 10:59:12 PM +00:00}
                 //StartDate = DateTimeOffset.Now.AddYears(-1),
