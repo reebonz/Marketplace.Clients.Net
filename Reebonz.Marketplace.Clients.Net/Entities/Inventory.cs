@@ -80,6 +80,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// </summary>
         public InventoryUpdateResult[] Results { get; set; }
     }
+    
     public class InventoryUpdateResult
     {
         /// <summary>
