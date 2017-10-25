@@ -56,7 +56,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public Price DiscountAmount { get; set; }
         public Price CommissionAmount { get; set; }
         public decimal? CommissionPercentage { get; set; }
-        public Price AccountCreditedBy => SaleAmount - CommissionAmount;
+        public Price AccountCreditedBy { get; set; }
     }
 
     public class OrderShipment
