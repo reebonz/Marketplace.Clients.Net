@@ -35,5 +35,10 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
 
             return string.Join("&", properties.ToArray());
         }
+
+        public static bool IsSameAs(this string source, string dest)
+        {
+            return source == dest || (source.IsNullOrEmpty() && dest.IsNullOrEmpty());
+        }
     }
 }

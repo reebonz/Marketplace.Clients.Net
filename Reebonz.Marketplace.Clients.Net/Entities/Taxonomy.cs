@@ -15,7 +15,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         }
     }
 
-    public class AttributeGroupForCategoryJson
+    public class CategoryAttribute
     {
         public string AttributeName { get; set; }
         public string AttributeId { get; set; }
@@ -23,6 +23,9 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public bool IsRequired { get; set; }
         public bool IsFreeText { get; set; }
         public int? MaxValuesAllowedOnProduct { get; set; }
+    }
+    public class AttributeGroupForCategoryJson : CategoryAttribute
+    {
         public IEnumerable<AttributeGroupJson> AttributeGroups { get; set; }
     }
 

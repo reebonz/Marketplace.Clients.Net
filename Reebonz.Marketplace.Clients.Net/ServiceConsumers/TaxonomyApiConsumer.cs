@@ -22,10 +22,16 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return Client.Execute<CategoryJson>(request).Data;
         }
 
-        public IEnumerable<AttributeGroupForCategoryJson> GetCategoryAttributes(int id)
+        public IEnumerable<AttributeGroupForCategoryJson> GetCategoryAttributeGroups(int id)
         {
             var request = new RestRequest($"api/taxonomy/categories/{id}/attributes", Method.GET);
             return Client.Execute<List<AttributeGroupForCategoryJson>>(request).Data;
+        }
+
+        public IEnumerable<CategoryAttribute> GetCategoryAttributes(int id)
+        {
+            var request = new RestRequest($"api/taxonomy/categories/{id}/attributes", Method.GET);
+            return Client.Execute<List<CategoryAttribute>>(request).Data;
         }
 
         public IEnumerable<AttributeDefinitionJson> GetAttributes()
