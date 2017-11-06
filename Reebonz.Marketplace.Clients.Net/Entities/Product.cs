@@ -99,6 +99,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// Optional: Exclude this product from any discounts
         /// </summary>
         public bool? ExcludeFromDiscounts { get; set; }
+        /// <summary>
+        /// Globally unique product code
+        /// </summary>
+        public string Upc { get; set; }
 
         /// <summary>
         /// The validation message in case the product validation is failed
