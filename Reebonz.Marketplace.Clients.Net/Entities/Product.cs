@@ -105,6 +105,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public string Upc { get; set; }
 
         /// <summary>
+        /// Country Code where the product was manufactured. Required for Reebonz items
+        /// </summary>
+        public string ManufactureCountryCode { get; set; }
+
+        /// <summary>
         /// The validation message in case the product validation is failed
         /// </summary>
         public string ValidationMessage { get; set; }
