@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Reebonz.Marketplace.Clients.Net.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
-using Reebonz.Marketplace.Clients.Net.Extensions;
 
 namespace Reebonz.Marketplace.Clients.Net.Entities
 {
@@ -42,6 +42,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public int OrderItemId { get; set; }
         public string ReebonzProductCode { get; set; }
         public string MerchantProductCode { get; set; }
+        public string MerchantProductId { get; set; }
         public OrderItemStatus Status { get; set; }
         public string CancellationReason { get; set; }
         public DateTime? BuyerProtectionEndDate { get; set; }
