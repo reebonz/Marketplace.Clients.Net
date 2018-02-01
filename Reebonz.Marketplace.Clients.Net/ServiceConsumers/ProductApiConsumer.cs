@@ -1,7 +1,7 @@
-﻿using System.Net;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
 using RestSharp;
+using System.Net;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
@@ -62,9 +62,9 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return HandleResponse<Product>(Client.Execute(request));
         }
 
-        public ProductPage Query(PageAndSortJsonRequest paging, MerchantProductsRequest form)
+        public ProductPage Query(MerchantProductsRequest form)
         {
-            var url = $"api/merchants/products?{paging.ToQueryString()}&{form.ToQueryString()}";
+            var url = $"api/merchants/products?{form.ToQueryString()}";
             var request = new RestRequest(url, Method.GET);
             var response = Client.Execute<ProductPage>(request);
             return response.Data;

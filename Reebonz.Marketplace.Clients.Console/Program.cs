@@ -1,6 +1,6 @@
-﻿using System;
-using Reebonz.Marketplace.Clients.Net;
+﻿using Reebonz.Marketplace.Clients.Net;
 using Reebonz.Marketplace.Clients.Net.Entities;
+using System;
 
 namespace Reebonz.Marketplace.Clients.Console
 {
@@ -142,8 +142,8 @@ namespace Reebonz.Marketplace.Clients.Console
             //variant.MerchantProductCode = "12345";
             var postResponse = client.Products.Post(product);
 
-            var pageAndSortJsonRequest = new PageAndSortJsonRequest { PageNumber = 1, PageSize = 50 };
-            var products = client.Products.Query(pageAndSortJsonRequest, null);
+            var request = new MerchantProductsRequest { PageNumber = 1, PageSize = 5000 };
+            var products = client.Products.Query(request);
 
             var i = 1;
         }
