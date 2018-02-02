@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
 using Reebonz.Marketplace.Clients.Net.Helpers;
 using RestSharp;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
@@ -33,22 +33,8 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 
         public IEnumerable<Order> GetOrders(MerchantOrdersRequest form)
         {
-            string url = "api/merchants/orders?";
-
-            if (form != null)
-            {
-                url += "PageNumber=" + (form.PageNumber ?? 1) + "&PageSize=" + (form.PageSize ?? 25);
-                if (form.StartDate.HasValue)
-                    url += "&StartDate=" + form.StartDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
-                if (form.EndDate.HasValue)
-                    url += "&EndDate=" + form.EndDate.Value.ToString("yyyy/MM/dd hh:mm:ss");
-                if (form.Status.Any())
-                    url += string.Join("&Status=", form.Status);
-                url += string.Join("&GetByLastModified=", form.GetByLastModified);
-            }
-
-            var request = new RestRequest(url, Method.GET);
-            return Client.Execute<List<Order>>(request).Data;
+            var response = GetOrdersPage(form);
+            return response.Resource?.Orders;
         }
 
         public ApiResponse<OrderPage> GetOrdersPage(MerchantOrdersRequest form)
