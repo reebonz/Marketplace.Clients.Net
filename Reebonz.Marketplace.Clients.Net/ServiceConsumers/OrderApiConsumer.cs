@@ -48,7 +48,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
                     url += "&StartDate=" + form.StartDate.Value.ToString(RestHelper.DateTimeOffsetFormat);
                 if (form.EndDate.HasValue)
                     url += "&EndDate=" + form.EndDate.Value.ToString(RestHelper.DateTimeOffsetFormat);
-                if (form.Status.Any())
+                if (form.Status != null && form.Status.Any())
                     url += string.Join("&Status=", form.Status);
                 url += string.Join("&GetByLastModified=", form.GetByLastModified);
             }

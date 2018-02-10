@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Reebonz.Marketplace.Clients.Net.Extensions;
+using System;
 using System.Collections.Generic;
-using Reebonz.Marketplace.Clients.Net.Extensions;
 
 namespace Reebonz.Marketplace.Clients.Net.Entities
 {
@@ -273,10 +273,5 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public ProductSort Sort { get; set; }
         public string Ids { get; set; }
         public string MerchantProductCodes { get; set; }
-
-        public MerchantProductsRequest()
-        {
-            Filters = new MerchantProductFilter[0];
-        }
     }
 }
