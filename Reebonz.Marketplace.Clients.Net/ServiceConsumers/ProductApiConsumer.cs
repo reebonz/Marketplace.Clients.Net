@@ -23,7 +23,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public ApiResponse Delete(string id)
+        public ApiResponse<Product> Delete(string id)
         {
             var request = new RestRequest("api/merchants/products/{0}".FormatWith(id), Method.DELETE);
             return HandleResponse<Product>(Client.Execute(request));

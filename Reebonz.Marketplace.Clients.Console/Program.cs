@@ -1,8 +1,6 @@
 ﻿using Reebonz.Marketplace.Clients.Net;
 using Reebonz.Marketplace.Clients.Net.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Reebonz.Marketplace.Clients.Console
 {
@@ -16,7 +14,7 @@ namespace Reebonz.Marketplace.Clients.Console
             var client = new MarketplaceClient(localUrl);
 
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
-            client.Authenticate("merchant-hq@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
+            client.Authenticate("merchant-vietti@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
 
             //TestOrderApi(client);
             TestProductApi(client);
@@ -143,24 +141,9 @@ namespace Reebonz.Marketplace.Clients.Console
             //var variant = product.Variants.First();
             //variant.MerchantProductCode = "12345";
             //var postResponse = client.Products.Post(product);
-            var list = new List<Product>();
-            int pageNumber = 1;
-            do
-            {
-                var request = new MerchantProductsRequest { PageNumber = pageNumber, PageSize = 5000 };
-                var response = client.Products.Query(request);
-                var products = response.Products.ToList();
 
-                if (products == null || products.Count <= 0)
-                {
-                    break;
-                }
-                list.AddRange(products);
+            var product = client.Products.Delete("11217199");
 
-                pageNumber++;
-            } while (true);
-
-            var i = 1;
         }
 
         private static void TestTaxonomyApi(MarketplaceClient client)
