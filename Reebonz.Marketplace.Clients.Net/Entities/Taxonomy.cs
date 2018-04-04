@@ -81,4 +81,17 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         Color,
         Gender
     }
+
+    public class PostSwapAttributeJson
+    {
+        public string DefinitionId { get; set; }
+        public int SourceAttributeId { get; set; }
+        public List<int> DestinationAttributeIds { get; set; }
+    }
+
+    public class PostSwapAttributeResponse
+    {
+       
+    }
+
 }

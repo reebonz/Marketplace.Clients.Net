@@ -52,5 +52,11 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             request.AddJsonBody(attribute);
             return HandleResponse<PostAttributeResponse>(Client.Execute(request), false);
         }
+        public ApiResponse<PostSwapAttributeResponse> PostSwapAttribute(PostSwapAttributeJson attribute)
+        {
+            var request = new RestRequest("api/taxonomy/attributes/swap", Method.POST);
+            request.AddJsonBody(attribute);
+            return HandleResponse<PostSwapAttributeResponse>(Client.Execute(request), false);
+        }
     }
 }

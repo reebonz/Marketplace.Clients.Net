@@ -1,6 +1,7 @@
 ﻿using Reebonz.Marketplace.Clients.Net;
 using Reebonz.Marketplace.Clients.Net.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace Reebonz.Marketplace.Clients.Console
 {
@@ -17,10 +18,10 @@ namespace Reebonz.Marketplace.Clients.Console
             client.Authenticate("merchant-vietti@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
 
             //TestOrderApi(client);
-            TestProductApi(client);
+            //TestProductApi(client);
             //TestTaxonomyApi(client);
             //TestCache(client);
-
+           // TestTaxonomySwapAttributeApi(client);
             System.Console.WriteLine("DONE");
         }
 
@@ -153,6 +154,16 @@ namespace Reebonz.Marketplace.Clients.Console
                 Name = "+lardini",
                 Type = AtributeType.Designer,
                 IsAvailable = true
+            });
+        }
+        
+        private static void TestTaxonomySwapAttributeApi(MarketplaceClient client)
+        {
+            var response = client.Taxonomy.PostSwapAttribute(new PostSwapAttributeJson
+            {
+                DefinitionId = "Designer",
+                SourceAttributeId = 4117,
+                DestinationAttributeIds = new List<int>{ 217 }
             });
         }
     }
