@@ -59,7 +59,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return HandleResponse<PostSwapAttributeResponse>(Client.Execute(request), false);
         }
 
-        public ApiResponse<Product> Delete(string id, string attributeId)
+        public ApiResponse<Product> Delete(string id, int attributeId)
         {
             var request = new RestRequest($"api/taxonomy/attributes/{id}/{attributeId}", Method.DELETE);
             return HandleResponse<Product>(Client.Execute(request));
