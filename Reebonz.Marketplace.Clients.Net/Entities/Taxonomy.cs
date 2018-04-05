@@ -82,8 +82,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         Gender
     }
 
-    public class PostSwapAttributeJson
+    public class PostSwapAttributeRequest
     {
+        /// <summary>
+        /// Attribute Definition Id. e.g. Designer, etc.
+        /// </summary>
         public string DefinitionId { get; set; }
         public int SourceAttributeId { get; set; }
         public List<int> DestinationAttributeIds { get; set; }
@@ -91,7 +94,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
 
     public class PostSwapAttributeResponse
     {
-       
+
     }
 
 }

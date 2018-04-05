@@ -159,7 +159,7 @@ namespace Reebonz.Marketplace.Clients.Console
         
         private static void TestTaxonomySwapAttributeApi(MarketplaceClient client)
         {
-            var response = client.Taxonomy.PostSwapAttribute(new PostSwapAttributeJson
+            var response = client.Taxonomy.SwapAttribute(new PostSwapAttributeRequest
             {
                 DefinitionId = "Designer",
                 SourceAttributeId = 4117,

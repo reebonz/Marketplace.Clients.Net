@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using RestSharp;
+using System.Collections.Generic;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
@@ -52,7 +52,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             request.AddJsonBody(attribute);
             return HandleResponse<PostAttributeResponse>(Client.Execute(request), false);
         }
-        public ApiResponse<PostSwapAttributeResponse> PostSwapAttribute(PostSwapAttributeJson attribute)
+        public ApiResponse<PostSwapAttributeResponse> SwapAttribute(PostSwapAttributeRequest attribute)
         {
             var request = new RestRequest("api/taxonomy/attributes/swap", Method.POST);
             request.AddJsonBody(attribute);
