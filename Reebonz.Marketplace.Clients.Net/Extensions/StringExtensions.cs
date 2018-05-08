@@ -1,5 +1,6 @@
 ﻿
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
@@ -24,16 +25,23 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
 
         public static string ToQueryString(this object obj)
         {
+            var props = new List<string>();
             if (obj == null)
             {
                 return string.Empty;
             }
 
-            var properties = from p in obj.GetType().GetProperties()
-                             where p.GetValue(obj, null) != null
-                             select p.Name + "=" + HttpUtility.UrlEncode(p.GetValue(obj, null).ToString());
+            foreach (var propertyInfo in obj.GetType().GetProperties())
+            {
+                var value = propertyInfo.GetValue(obj, null);
+                if (value!=null)
+                {
+                    var encodedValue = HttpUtility.UrlEncode(value.ToString());
+                    props.Add($"{propertyInfo.Name}={encodedValue}");
+                }
+            }
 
-            return string.Join("&", properties.ToArray());
+            return string.Join("&", props);
         }
 
         public static bool IsSameAs(this string source, string dest)

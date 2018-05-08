@@ -15,9 +15,9 @@ namespace Reebonz.Marketplace.Clients.Console
             var client = new MarketplaceClient(localUrl);
 
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
-            client.Authenticate("merchant-vietti@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
+            client.Authenticate("merchant-alducadaosta@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
 
-            //TestOrderApi(client);
+            TestOrderApi(client);
             //TestProductApi(client);
             //TestTaxonomyApi(client);
             //TestCache(client);
@@ -41,9 +41,9 @@ namespace Reebonz.Marketplace.Clients.Console
             {
                 //{6/25/2017 10:59:12 PM +00:00}
                 //StartDate = DateTimeOffset.Now.AddYears(-1),
-                StartDate = new DateTimeOffset(2017, 6, 25, 22, 59, 12, new TimeSpan(0, 0, 0)),
+                StartDate = new DateTimeOffset(2018, 5, 4, 00, 00, 00, new TimeSpan(0, 0, 0)),
+                EndDate = new DateTimeOffset(2018, 5, 5, 00, 00, 00, new TimeSpan(0, 0, 0)),
                 GetByLastModified = true,
-                EndDate = null,
                 PageNumber = 1,
                 PageSize = 100,
                 Status = new OrderItemStatus[0]
