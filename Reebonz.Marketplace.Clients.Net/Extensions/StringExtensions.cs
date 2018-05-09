@@ -1,10 +1,10 @@
 ﻿
 
+using Reebonz.Marketplace.Clients.Net.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Reebonz.Marketplace.Clients.Net.Helpers;
 
 namespace Reebonz.Marketplace.Clients.Net.Extensions
 {
@@ -36,7 +36,7 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
             foreach (var propertyInfo in obj.GetType().GetProperties())
             {
                 var value = propertyInfo.GetValue(obj, null);
-                if (value!=null)
+                if (value != null)
                 {
                     if (value.GetType().IsArray || value.GetType().IsGenericType)
                     {
@@ -50,9 +50,15 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
                             props.Add($"{propertyInfo.Name}={encodedValue}");
                         }
                     }
-                    else if(value is DateTimeOffset)
+                    else if (value is DateTimeOffset)
                     {
                         var dateValue = (DateTimeOffset)value;
+                        var encodedValue = HttpUtility.UrlEncode(dateValue.ToString(RestHelper.DateTimeOffsetFormat));
+                        props.Add($"{propertyInfo.Name}={encodedValue}");
+                    }
+                    else if (value is DateTime)
+                    {
+                        var dateValue = (DateTime)value;
                         var encodedValue = HttpUtility.UrlEncode(dateValue.ToString(RestHelper.DateTimeOffsetFormat));
                         props.Add($"{propertyInfo.Name}={encodedValue}");
                     }
@@ -61,7 +67,7 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
                         var encodedValue = HttpUtility.UrlEncode(value.ToString());
                         props.Add($"{propertyInfo.Name}={encodedValue}");
                     }
-                    
+
                 }
             }
 
