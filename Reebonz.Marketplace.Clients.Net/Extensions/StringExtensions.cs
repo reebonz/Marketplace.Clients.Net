@@ -1,8 +1,10 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Reebonz.Marketplace.Clients.Net.Helpers;
 
 namespace Reebonz.Marketplace.Clients.Net.Extensions
 {
@@ -36,8 +38,30 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
                 var value = propertyInfo.GetValue(obj, null);
                 if (value!=null)
                 {
-                    var encodedValue = HttpUtility.UrlEncode(value.ToString());
-                    props.Add($"{propertyInfo.Name}={encodedValue}");
+                    if (value.GetType().IsArray || value.GetType().IsGenericType)
+                    {
+                        string[] valueArray = ((System.Collections.IEnumerable)value)
+                            .Cast<object>()
+                            .Select(x => x.ToString())
+                            .ToArray();
+                        foreach (var valueItem in valueArray)
+                        {
+                            var encodedValue = HttpUtility.UrlEncode(valueItem);
+                            props.Add($"{propertyInfo.Name}={encodedValue}");
+                        }
+                    }
+                    else if(value is DateTimeOffset)
+                    {
+                        var dateValue = (DateTimeOffset)value;
+                        var encodedValue = HttpUtility.UrlEncode(dateValue.ToString(RestHelper.DateTimeOffsetFormat));
+                        props.Add($"{propertyInfo.Name}={encodedValue}");
+                    }
+                    else
+                    {
+                        var encodedValue = HttpUtility.UrlEncode(value.ToString());
+                        props.Add($"{propertyInfo.Name}={encodedValue}");
+                    }
+                    
                 }
             }
 

@@ -40,24 +40,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 
         public ApiResponse<OrderPage> GetOrdersPage(MerchantOrdersRequest form)
         {
-            var url = "api/merchants/orders?";
-
-            if (form != null)
-            {
-                url += $"PageNumber={(form.PageNumber ?? 1)}&PageSize={(form.PageSize ?? 25)}";
-
-                if (form.StartDate.HasValue)
-                    url += $"&StartDate={form.StartDate.Value.ToString(RestHelper.DateTimeOffsetFormat)}";
-
-                if (form.EndDate.HasValue)
-                    url += $"&EndDate={form.EndDate.Value.ToString(RestHelper.DateTimeOffsetFormat)}";
-
-                if (form.Status != null && form.Status.Any()) 
-                    url += $"&Status={string.Join("&Status=", form.Status)}";
-
-                url += $"&GetByLastModified={form.GetByLastModified}";
-            }
-
+            var url = $"api/merchants/orders?{form.ToQueryString()}";
             var request = new RestRequest(url, Method.GET);
             return HandleResponse<OrderPage>(Client.Execute<OrderPage>(request), false);
         }

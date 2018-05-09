@@ -15,10 +15,10 @@ namespace Reebonz.Marketplace.Clients.Console
             var client = new MarketplaceClient(localUrl);
 
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
-            client.Authenticate("merchant-alducadaosta@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
+            client.Authenticate("merchant-eleonorabonucci@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
 
-            TestOrderApi(client);
-            //TestProductApi(client);
+            //TestOrderApi(client);
+            TestProductApi(client);
             //TestTaxonomyApi(client);
             //TestCache(client);
            // TestTaxonomySwapAttributeApi(client);
@@ -143,7 +143,17 @@ namespace Reebonz.Marketplace.Clients.Console
             //variant.MerchantProductCode = "12345";
             //var postResponse = client.Products.Post(product);
 
-            var product = client.Products.Delete("11217199");
+            //var product = client.Products.Delete("11217199");
+            var products = client.Products.Query(new MerchantProductsRequest
+            {
+                PageNumber = 1,
+                PageSize = 100,
+                Filters = new []
+                {
+                    MerchantProductFilter.NoMainImage
+                },
+                Sort = ProductSort.CreatedAscending
+            });
 
         }
 
