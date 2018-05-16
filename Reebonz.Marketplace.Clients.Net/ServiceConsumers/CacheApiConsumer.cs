@@ -1,6 +1,7 @@
 ﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
 using RestSharp;
+using System.Net;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
@@ -10,12 +11,15 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             base(client, throwOnErrorStatus)
         { }
 
-        public ApiResponse<CacheSummary> GetFlush(CacheInvalidationMessage message)
+        public bool GetFlush(CacheInvalidationMessage message)
         {
             var queryString = message.ToQueryString();
 
             var request = new RestRequest($"api/cache/flush?{queryString}", Method.GET);
-            return HandleResponse<CacheSummary>(Client.Execute(request), false);
+
+            var response = Client.Execute(request);
+
+            return response.StatusCode == HttpStatusCode.OK;
         }
     }
 }

@@ -15,19 +15,19 @@ namespace Reebonz.Marketplace.Clients.Console
             var client = new MarketplaceClient(localUrl);
 
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
-            client.Authenticate("merchant-eleonorabonucci@reebonz.com", "ReeB0nz1nt3gr4ti0ns002");
+            client.Authenticate("merchantintegrations@reebonz.com", "BrtdsS5SXxj2KmucEp3RDCxy");
 
             //TestOrderApi(client);
-            TestProductApi(client);
+            //TestProductApi(client);
             //TestTaxonomyApi(client);
-            //TestCache(client);
-           // TestTaxonomySwapAttributeApi(client);
+            TestCache(client);
+            // TestTaxonomySwapAttributeApi(client);
             System.Console.WriteLine("DONE");
         }
 
         private static void TestCache(MarketplaceClient client)
         {
-            var flushSummary = client.Cache.GetFlush(new CacheInvalidationMessage
+            var result = client.Cache.GetFlush(new CacheInvalidationMessage
             {
                 Namespace = CacheNamespace.Taxonomy,
                 Key = "attributetypedefinitions/designer"
@@ -148,7 +148,7 @@ namespace Reebonz.Marketplace.Clients.Console
             {
                 PageNumber = 1,
                 PageSize = 100,
-                Filters = new []
+                Filters = new[]
                 {
                     MerchantProductFilter.NoMainImage
                 },
@@ -166,14 +166,14 @@ namespace Reebonz.Marketplace.Clients.Console
                 IsAvailable = true
             });
         }
-        
+
         private static void TestTaxonomySwapAttributeApi(MarketplaceClient client)
         {
             var response = client.Taxonomy.SwapAttribute(new PostSwapAttributeRequest
             {
                 DefinitionId = "Designer",
                 SourceAttributeId = 4117,
-                DestinationAttributeIds = new List<int>{ 217 }
+                DestinationAttributeIds = new List<int> { 217 }
             });
         }
     }
