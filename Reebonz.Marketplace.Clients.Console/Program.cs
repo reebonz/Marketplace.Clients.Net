@@ -17,10 +17,10 @@ namespace Reebonz.Marketplace.Clients.Console
             //client.Authenticate("nick.champion+m@reebonz.com", "reebonz-merchant");
             client.Authenticate("merchantintegrations@reebonz.com", "BrtdsS5SXxj2KmucEp3RDCxy");
 
-            //TestOrderApi(client);
+            TestOrderApi(client);
             //TestProductApi(client);
             //TestTaxonomyApi(client);
-            TestCache(client);
+            //TestCache(client);
             // TestTaxonomySwapAttributeApi(client);
             System.Console.WriteLine("DONE");
         }
