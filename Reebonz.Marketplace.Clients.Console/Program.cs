@@ -40,9 +40,9 @@ namespace Reebonz.Marketplace.Clients.Console
             var orders = client.Orders.GetOrders(new MerchantOrdersRequest
             {
                 //{6/25/2017 10:59:12 PM +00:00}
-                //StartDate = DateTimeOffset.Now.AddYears(-1),
-                StartDate = new DateTimeOffset(2018, 5, 4, 00, 00, 00, new TimeSpan(0, 0, 0)),
-                EndDate = new DateTimeOffset(2018, 5, 5, 00, 00, 00, new TimeSpan(0, 0, 0)),
+                StartDate = DateTimeOffset.Now.AddYears(-1),
+                //StartDate = new DateTimeOffset(2018, 5, 4, 00, 00, 00, new TimeSpan(0, 0, 0)),
+                //EndDate = new DateTimeOffset(2018, 5, 5, 00, 00, 00, new TimeSpan(0, 0, 0)),
                 GetByLastModified = true,
                 PageNumber = 1,
                 PageSize = 100,

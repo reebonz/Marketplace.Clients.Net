@@ -53,13 +53,13 @@ namespace Reebonz.Marketplace.Clients.Net.Extensions
                     else if (value is DateTimeOffset)
                     {
                         var dateValue = (DateTimeOffset)value;
-                        var encodedValue = HttpUtility.UrlEncode(dateValue.ToString(RestHelper.DateTimeOffsetFormat));
+                        var encodedValue = HttpUtility.UrlEncode(dateValue.ToString("O"));
                         props.Add($"{propertyInfo.Name}={encodedValue}");
                     }
                     else if (value is DateTime)
                     {
                         var dateValue = (DateTime)value;
-                        var encodedValue = HttpUtility.UrlEncode(dateValue.ToString(RestHelper.DateTimeOffsetFormat));
+                        var encodedValue = HttpUtility.UrlEncode(dateValue.ToString("O"));
                         props.Add($"{propertyInfo.Name}={encodedValue}");
                     }
                     else
