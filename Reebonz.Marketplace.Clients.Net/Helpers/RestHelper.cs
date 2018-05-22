@@ -4,7 +4,7 @@ namespace Reebonz.Marketplace.Clients.Net.Helpers
 {
     public static class RestHelper
     {
-        //public const string DateTimeOffsetFormat = "yyyy-MM-ddTHH:mm:ss.fffZ";
+        public const string ApiDatetimeFormat = "yyyy-MM-ddTHH:mm:ss";
 
         public static RestClient CreateClient(string baseUrl)
         {
