@@ -274,4 +274,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public string Ids { get; set; }
         public string MerchantProductCodes { get; set; }
     }
+
+    public class BulkSetLiveResponse
+    {
+        public int Processed { get; set; }
+        public int Total { get; set; }
+    }
 }
