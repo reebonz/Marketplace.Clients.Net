@@ -69,5 +69,13 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             var response = Client.Execute<ProductPage>(request);
             return response.Data;
         }
+
+        public BulkSetLiveResponse PushBulkSetLive(string merchantId)
+        {
+            var url = $"api/admin/catalogue/{merchantId}/setlive";
+            var request = new RestRequest(url, Method.PUT);
+            var response = Client.Execute<BulkSetLiveResponse>(request);
+            return response.Data;
+        }
     }
 }
