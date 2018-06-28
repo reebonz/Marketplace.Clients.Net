@@ -29,6 +29,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public Price OrderTotal { get; set; }
         public Price Commission { get; set; }
         public Price AccountCreditedBy { get; set; }
+
+        public override string ToString()
+        {
+            return Id;
+        }
     }
 
     public class Customer
@@ -58,6 +63,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         public Price CommissionAmount { get; set; }
         public decimal? CommissionPercentage { get; set; }
         public Price AccountCreditedBy { get; set; }
+        public override string ToString()
+        {
+            return $"{OrderItemId}|{MerchantProductId}|{MerchantProductCode}";
+        }
     }
 
     public class OrderShipment
