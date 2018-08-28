@@ -40,6 +40,8 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string CountryIsoCode { get; set; }
+        public string Language { get; set; }
     }
 
     public class OrderItem
