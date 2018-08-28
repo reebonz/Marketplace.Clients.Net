@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
 using RestSharp;
 
@@ -8,7 +7,7 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
     public class InventoryApiConsumer : BaseApiConsumer
     {
         internal InventoryApiConsumer(RestClient client, bool throwOnErrorStatus) : base(client, throwOnErrorStatus)
-        {}
+        { }
 
         public Inventory Get(string merchantProductCode)
         {
@@ -16,21 +15,21 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return Client.Execute<Inventory>(request).Data;
         }
 
-        public IEnumerable<Inventory> Get(int pageNumber, int pageSize, ProductStatus? status = null)
+        public InventoryPage Get(int pageNumber, int pageSize, ProductStatus? status = null)
         {
             var request = new RestRequest("api/merchants/inventory?pageNumber={0}&pageSize={1}{2}".FormatWith(
-                pageNumber, 
-                pageSize, 
+                pageNumber,
+                pageSize,
                 status == null ? string.Empty : "&status={0}".FormatWith(status)), Method.GET);
 
-            return Client.Execute<List<Inventory>>(request).Data;
+            return Client.Execute<InventoryPage>(request).Data;
         }
 
         public ApiResponse<BulkInventoryUpdateResponse> Post(Inventory[] skus)
         {
             var request = new RestRequest("api/merchants/inventory", Method.POST);
             request.AddJsonBody(skus);
-            return HandleResponse<BulkInventoryUpdateResponse>(Client.Execute(request),false);
+            return HandleResponse<BulkInventoryUpdateResponse>(Client.Execute(request), false);
         }
 
         public ApiResponse<Inventory> Put(string merchantProductCode, InventoryUpdate inventory)

@@ -32,15 +32,28 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// <summary>
         /// Current list price for the product / variant
         /// </summary>
+        public decimal? MarkdownPrice { get; set; }
+        /// <summary>
+        /// Current list price for the product / variant
+        /// </summary>
         public decimal? RetailPrice { get; set; }
+        /// <summary>
+        /// Country level pricing
+        /// </summary>
+        public CountryPrice[] CountryPricing { get; set; }
         /// <summary>
         /// A timestamp for when the inventory was updated in merchant system. Ensures we dont process the same update multiple times
         /// </summary>
         public DateTime? SyncTimestamp { get; set; }
         /// <summary>
-        /// Force an update even if SyncTimestamp is unchanged
+        /// SHould we force a sync for this SKU
         /// </summary>
         public bool? ForceSync { get; set; }
+
+        public InventoryUpdate()
+        {
+            CountryPricing = new CountryPrice[0];
+        }
     }
 
     public class InventoryPage
@@ -80,7 +93,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// </summary>
         public InventoryUpdateResult[] Results { get; set; }
     }
-    
+
     public class InventoryUpdateResult
     {
         /// <summary>
