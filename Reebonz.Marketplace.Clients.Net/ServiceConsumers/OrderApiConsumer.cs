@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
-using Reebonz.Marketplace.Clients.Net.Helpers;
 using RestSharp;
+using System.Collections.Generic;
 
 namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
 {
@@ -38,11 +36,11 @@ namespace Reebonz.Marketplace.Clients.Net.ServiceConsumers
             return response.Resource?.Orders;
         }
 
-        public ApiResponse<OrderPage> GetOrdersPage(MerchantOrdersRequest form)
+        public ApiResponse<OrderPage> GetOrdersPage(MerchantOrdersRequest form, bool usesApiResponse = false)
         {
             var url = $"api/merchants/orders?{form.ToQueryString()}";
             var request = new RestRequest(url, Method.GET);
-            return HandleResponse<OrderPage>(Client.Execute<OrderPage>(request), false);
+            return HandleResponse<OrderPage>(Client.Execute<OrderPage>(request), usesApiResponse);
         }
 
         public ApiResponse<OrderShipment> CreateShipment(string id, ShipOrderRequest form)
