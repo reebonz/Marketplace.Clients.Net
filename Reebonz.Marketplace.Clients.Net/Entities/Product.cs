@@ -189,6 +189,11 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// the timestamp of the inventory change - should come from the merchant and ensures we dont process the same update multiple times
         /// </summary>
         public DateTime? SyncTimestamp { get; set; }
+
+        /// <summary>
+        /// The original size info from merchant data
+        /// </summary>
+        public string SizeInfo { get; set; }
     }
 
     public class ProductLocale
@@ -229,6 +234,7 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// Required: Order in which the product should be displayed starting from 1, image at position 1 will be displayed in search results and as the main image on the product detail page.
         /// </summary>
         public int Position { get; set; }
+
         /// <summary>
         /// Optional: Set to true if you want us to resync this image regardless of whether we've synced it before
         /// </summary>
