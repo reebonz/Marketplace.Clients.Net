@@ -229,6 +229,10 @@ namespace Reebonz.Marketplace.Clients.Net.Entities
         /// Required: Order in which the product should be displayed starting from 1, image at position 1 will be displayed in search results and as the main image on the product detail page.
         /// </summary>
         public int Position { get; set; }
+        /// <summary>
+        /// Optional: Set to true if you want us to resync this image regardless of whether we've synced it before
+        /// </summary>
+        public bool ForceSync { get; set; }
     }
 
     public class AttributeKey
