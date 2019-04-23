@@ -3,6 +3,7 @@ using Reebonz.Marketplace.Clients.Net.Extensions;
 using Reebonz.Marketplace.Clients.Net.Helpers;
 using Reebonz.Marketplace.Clients.Net.ServiceConsumers;
 using RestSharp;
+using System;
 using System.Security.Authentication;
 
 namespace Reebonz.Marketplace.Clients.Net
@@ -120,7 +121,16 @@ namespace Reebonz.Marketplace.Clients.Net
         private void SetAuthHeader(string token)
         {
             // TODO Vu: throw and catch the exception somewhere, make sure both task and service can catch any ex from any where
-            _client.RemoveDefaultParameter("Authorization");
+            try
+            {
+                // lib exception: sequnce contains more than 1 element
+                _client.RemoveDefaultParameter("Authorization");
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
             _client.AddDefaultHeader("Authorization", "Bearer {0}".FormatWith(token));
         }
     }
