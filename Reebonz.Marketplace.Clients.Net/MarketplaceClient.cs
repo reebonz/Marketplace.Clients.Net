@@ -1,9 +1,9 @@
-﻿using System.Security.Authentication;
-using Reebonz.Marketplace.Clients.Net.Entities;
+﻿using Reebonz.Marketplace.Clients.Net.Entities;
 using Reebonz.Marketplace.Clients.Net.Extensions;
 using Reebonz.Marketplace.Clients.Net.Helpers;
 using Reebonz.Marketplace.Clients.Net.ServiceConsumers;
 using RestSharp;
+using System.Security.Authentication;
 
 namespace Reebonz.Marketplace.Clients.Net
 {
@@ -119,6 +119,7 @@ namespace Reebonz.Marketplace.Clients.Net
 
         private void SetAuthHeader(string token)
         {
+            // TODO Vu: throw and catch the exception somewhere, make sure both task and service can catch any ex from any where
             _client.RemoveDefaultParameter("Authorization");
             _client.AddDefaultHeader("Authorization", "Bearer {0}".FormatWith(token));
         }
